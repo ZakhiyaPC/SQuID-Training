@@ -105,13 +105,14 @@ library(squidSim)
 squid_data <- simulate_population(
   data_structure <- make_structure(structure="group(5)/individuals(9)", repeat_obs=10,  level_names=list(group=c("1","2","3","4","5"))),
     parameters = list(
-    individual = list(
+     intercept = 1,
+     individuals = list(
       vcov = 0.3
     ),
-    group = list(
+     group = list(
       
             fixed = TRUE,  # Fixed effect for each group (5 levels)
-            beta = c(1, 2, 3, 4, 5),
+            beta = c(1, 2, 3, 4, 5)
     ),
     residual = list(
       vcov = 0.3
@@ -121,7 +122,7 @@ squid_data <- simulate_population(
   n_pop = 100 #simulationg 100 populations
 )
 
-data <- get_population_data(squid_data, list=TRUE), #to get the data outside from the squid_data object
+zdata <- get_population_data(squid_data, list=TRUE) #to get the data outside from the squid_data object
 
 
 #viewing
