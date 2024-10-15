@@ -103,16 +103,15 @@ sum(results$pchisq<0.05)/ nrow(results)
 library(squidSim)
 
 squid_data <- simulate_population(
-  data_structure = make_structure(structure="group(5)/individual(9)", repeat_obs=10),
-  parameters = list(
+  data_structure <- make_structure(structure="group(5)/individuals(9)", repeat_obs=10,  level_names=list(group=c("1","2","3","4","5"))),
+    parameters = list(
     individual = list(
       vcov = 0.3
     ),
     group = list(
       
             fixed = TRUE,  # Fixed effect for each group (5 levels)
-            
-            vcov = matrix(c(1, 2, 3, 4, 5), nrow = 1, ncol = 5, byrow = TRUE),
+            beta = c(1, 2, 3, 4, 5),
     ),
     residual = list(
       vcov = 0.3
